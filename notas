@@ -1,0 +1,34 @@
+en el componete agregar turno   todos las horras y poner un include  en resumen no poner horas repetidas
+login
+contexto con el nombre para asignarlo automaticamente
+agregar nuevas tablas
+arreglar el Elegi el turno que sea dinamico
+_____________
+tareas: 
+jueves:
+poner el accestoken en una variable de entorno(importante)
+hacer la backend de productos comprados
+viernes:
+factorizar check
+fronted de productos comprados check
+sabado:
+total re calculado 
+fronted de productos comprados ckeck
+lunes:
+corregir subir productos check
+eliminar  productos. check
+modificar al backen para capturar el 201 de mercado pago check
+hacer un navbar de admin check
+hacer un hook para sacar de la pague a usuarios no autorizados 
+
+
+martes:
+sacar a el usuario que no sea admin check 
+y 
+que solo lo vean los admin al navbar admin check
+pulir
+
+
+________
+preguntar a facundo
+como hacer sacarAdmin sea un hook
