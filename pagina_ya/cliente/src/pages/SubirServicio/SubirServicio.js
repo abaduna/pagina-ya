@@ -1,29 +1,27 @@
-import React from "react";
+import { useEffect, useReducer } from "react";
 import Form from "react-bootstrap/Form";
 import InputGroup from "react-bootstrap/InputGroup";
 import NavBar from "../../componets/Navbar/NavBar";
 import { useData } from "../../hoock/data";
 import Button from "react-bootstrap/esm/Button";
-
+import { fetchReducer, initialState } from "../../reducers/fetch";
 function SubirServicio() {
   const {
-    name,
     setName,
-    profession,
     setProfession,
     sendData,
     data,
     loading,
     error,
+    
   } = useData();
-  console.log(loading);
-  console.log(data);
+
   if (error) {
-    return <h1>Error</h1>
+    return <h1>Error</h1>;
   }
   if (loading) {
     console.log(loading);
-    return <h1>Cargando...</h1>
+    return <h1>Cargando...</h1>;
   }
   return (
     <>
