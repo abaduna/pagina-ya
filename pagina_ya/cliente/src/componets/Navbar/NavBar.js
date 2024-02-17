@@ -16,6 +16,7 @@ const NavBar = () => {
               <Nav.Link><NavLink to="/">Home</NavLink></Nav.Link>
               <Nav.Link><NavLink to="/subirservicio">Subir Servicio </NavLink></Nav.Link>
               <Nav.Link><NavLink to="/iniciosecion">Inicio de secion </NavLink></Nav.Link>
+              <Nav.Link><NavLink to="/register">Register </NavLink></Nav.Link>
             </Nav>
           </Navbar.Collapse>
         </Container>

@@ -6,10 +6,10 @@ import InputGroup from "react-bootstrap/InputGroup";
 function Login() {
   const [username, setUsername] = useState("");
   const [contraseña, setContraseña] = useState("");
-  const registrate = () => {};
+  const inicio = () => {};
   return (
     <>
-      <h4>Registrate</h4>
+      <h4>inicia secion</h4>
       <form>
         <InputGroup className="mb-3">
           <Form.Control
@@ -29,7 +29,8 @@ function Login() {
             onChange={(e) => setContraseña(e.target.value)}
           />
         </InputGroup>
-        <Button onClick={registrate}>Iniciar secion</Button>
+        
+        <Button onClick={inicio}>Iniciar secion</Button>
       </form>
     </>
   );
