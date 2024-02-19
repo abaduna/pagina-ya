@@ -1,9 +1,10 @@
-import React from "react";
+import React, { useContext } from "react";
 import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import NavDropdown from "react-bootstrap/NavDropdown";
-import {Link, NavLink} from "react-router-dom"
+import { Link, NavLink } from "react-router-dom";
+import { AuthContext } from "../../contexts/Auth";
 const NavBar = () => {
   return (
     <>
@@ -13,10 +14,18 @@ const NavBar = () => {
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="me-auto">
-              <Nav.Link><NavLink to="/">Home</NavLink></Nav.Link>
-              <Nav.Link><NavLink to="/subirservicio">Subir Servicio </NavLink></Nav.Link>
-              <Nav.Link><NavLink to="/iniciosecion">Inicio de secion </NavLink></Nav.Link>
-              <Nav.Link><NavLink to="/register">Register </NavLink></Nav.Link>
+              <Nav.Link>
+                <NavLink to="/">Home</NavLink>
+              </Nav.Link>
+              <Nav.Link>
+                <NavLink to="/subirservicio">Subir Servicio </NavLink>
+              </Nav.Link>
+              <Nav.Link>
+                <NavLink to="/iniciosecion">Inicio de secion </NavLink>
+              </Nav.Link>
+              <Nav.Link>
+                <NavLink to="/register">Register </NavLink>
+              </Nav.Link>
             </Nav>
           </Navbar.Collapse>
         </Container>

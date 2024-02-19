@@ -11,7 +11,6 @@ export const useFetch = (endpoint) => {
 
   const fetchData = async (endpoint) => {
     try {
-      
       let { data } = await API.get(endpoint);
       console.log(data);
       dispatch({ type: FETCH_DATA.SET_DATA, payload: data });
@@ -21,14 +20,13 @@ export const useFetch = (endpoint) => {
     }
   };
   const postData = async (endpoint, dataPost) => {
-    console.log(`post data`);
     try {
-      setLoading(true)
+      setLoading(true);
       let { data } = await API.post(endpoint, dataPost); //SET_POST_DATA
       console.log(data);
       dispatch({ type: FETCH_DATA.SET_DATA, payload: data });
       setLoading(false);
-      return loading
+      return loading;
     } catch (error) {
       dispatch({ type: FETCH_DATA.SET_ERROR });
     }
