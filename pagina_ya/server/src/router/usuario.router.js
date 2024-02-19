@@ -1,6 +1,7 @@
 const express = require("express");
 const database = require("../model/bd");
 const routerUsuarios = express.Router();
+const jwt = require("jsonwebtoken");
 
 const bcrypt = require("bcryptjs");
 
@@ -23,7 +24,12 @@ routerUsuarios.post("/usuarios", async (req, res) => {
     // Compara la contraseña proporcionada con el hash almacenado
     const isMatch = await bcrypt.compare(password, hashedPasswordFromDB);
     if (isMatch) {
-      res.status(200).json({ message: "Usuario autenticado con éxito" });
+      const token = jwt.sign({ username }, "Stack", {
+        expiresIn: "3m",
+      });
+      res
+        .status(200)
+        .json({ message: "Usuario autenticado con éxito", token: token });
     } else {
       res.status(200).json({ message: "Credenciales incorrectas" });
     }
