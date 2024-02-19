@@ -5,8 +5,12 @@ import InputGroup from "react-bootstrap/InputGroup";
 import NavBar from "../../../componets/Navbar/NavBar";
 import { useForm } from "react-hook-form";
 import Alert from "react-bootstrap/Alert";
-
+import {useFetch} from "../../../hoock/useFetch"
+import { useNavigate } from "react-router-dom";
 const Register = () => {
+  const [endpoint, setEndpoint] = useState("register");
+  const { state, postData } = useFetch(endpoint);
+  const navigate = useNavigate()
   const {
     register,
     handleSubmit,
@@ -14,8 +18,18 @@ const Register = () => {
     control,
     formState: { errors },
   } = useForm();
-  const registrar = (object) => {
+  const registrar = async(object) => {
     console.log(object);
+    const data = {
+      username: object.usuario,
+      password: object.contraseña,
+    };
+   await postData(endpoint, data);
+    console.log(state);
+    await console.log(state.data.message);
+    if (state.data.message ==="Usuario creado con éxito") {
+      navigate("/iniciosecion");
+    }
   };
   const password = watch("contraseña", "");
   return (
@@ -61,7 +75,6 @@ const Register = () => {
               required: true,
               validate: (value) =>
                 value === password || "La contraseña no coinciden",
-              
             })}
           />
         </InputGroup>

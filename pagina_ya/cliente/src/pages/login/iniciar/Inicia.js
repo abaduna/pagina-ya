@@ -4,7 +4,8 @@ import Form from "react-bootstrap/Form";
 import InputGroup from "react-bootstrap/InputGroup";
 import { useForm } from "react-hook-form";
 import Alert from "react-bootstrap/Alert";
-
+import { useFetch } from "../../../hoock/useFetch";
+import { useNavigate } from "react-router-dom";
 function Login() {
   const {
     register,
@@ -12,14 +13,37 @@ function Login() {
     watch,
     formState: { errors },
   } = useForm();
-
-  const inicio = (object) => {
+  const navigate = useNavigate();
+  const [endpoint, setEndpoint] = useState("usuarios");
+  const { state, postData } = useFetch(endpoint);
+  const { data, loading, error } = state;
+  const [credencialesIncontectas,setCredencialesIncontectas] = useState(false)
+  const [userIncontectas,setUserIncontectas] = useState(false)
+  const inicio = async(object) => {
     console.log(object);
+    const data = {
+      username: object.usuario,
+      password: object.contraseña,
+    };
+    await  postData(endpoint, data);
+    await console.log(state.data);
+    if (state.data.message === "Usuario no encontrado") {
+      return setUserIncontectas(true)
+    }
+    if (state.data.message === "Credenciales incorrectas") {
+      return setCredencialesIncontectas(true)
+    }
+    if (state.data.message === "Usuario autenticado con éxito") {
+      navigate("/");
+    }//usuario no encontrado
+    
   };
   return (
     <>
       <h4>inicia secion</h4>
       <form onSubmit={handleSubmit(inicio)}>
+        {credencialesIncontectas &&<Alert variant="danger">Contraseña incorrectas</Alert> }
+        {userIncontectas &&<Alert variant="danger">Usuario no encontrado</Alert> }
         {errors?.usuario && (
           <Alert variant="danger">El campo es obligatorio</Alert>
         )}
