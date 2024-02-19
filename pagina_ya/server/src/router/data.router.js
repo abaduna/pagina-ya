@@ -6,6 +6,7 @@ const routerData = express.Router();
 routerData.get("/data", async (req, res) => {
   const token = req.header("Authorization");
 
+  
   const conection = await database.getConnection();
   if (!token) {
     return res

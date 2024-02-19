@@ -25,7 +25,7 @@ function Login() {
       username: object.usuario,
       password: object.contraseña,
     };
-
+    console.log(state);
     await postData(endpoint, data);
     if (state.data.message === "Usuario no encontrado") {
       return setUserIncontectas(true);
@@ -35,11 +35,10 @@ function Login() {
     }
     if (state.data.message === "Usuario autenticado con éxito") {
       //resive el jwt
-      
-     // navigate("/");
+     await login(state.data.token);
+      await console.log(state.data.token);
+      navigate("/");
     } //usuario no encontrado
-    const jwt = login(object);
-      console.log(jwt);
   };
   return (
     <>

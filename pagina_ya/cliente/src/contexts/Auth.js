@@ -8,16 +8,13 @@ const { Provider } = AuthContext;
 
 export const AuthProvider = ({ children }) => {
   const [state, dispatch] = useReducer(authReducer, initialState);
-  const login = () => {
+  const login = (jwt) => {
     console.log(`login`);
-    const { jwt } = {
-      jwt: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkFydHVyb0JhZHVuYSIsImlhdCI6MTUxNjIzOTAyMn0.LXyi3lgcAO13rKUm7xLYx6MkZKZnQibI91HsAhXbJMQ",
-    };
+   console.log(jwt);
     
-    dispatch({ type: SET_AUTH, payload: { jwt } });
+    dispatch({ type: SET_AUTH, payload: {  jwt: jwt } });
     localStorage.setItem("auth",jwt)
-    console.log(state);
-    return jwt;
+    console.log(state)
   };
   const setAuth = ({ jwt }) => {
     dispatch({ type: SET_AUTH, payload: { jwt } });

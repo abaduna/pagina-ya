@@ -25,8 +25,9 @@ routerUsuarios.post("/usuarios", async (req, res) => {
     const isMatch = await bcrypt.compare(password, hashedPasswordFromDB);
     if (isMatch) {
       const token = jwt.sign({ username }, "Stack", {
-        expiresIn: "3m",
+        expiresIn: "24h",
       });
+      console.log(token);
       res
         .status(200)
         .json({ message: "Usuario autenticado con éxito", token: token });
